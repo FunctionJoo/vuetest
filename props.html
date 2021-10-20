@@ -11,7 +11,8 @@
 </head>
 <body>
     <div id="app">
-
+        <app-header v-bind:propsdata="message"></app-header>
+        <app-content v-bind:propsdata="num"></app-content>
     </div>
 
     <script>
@@ -20,11 +21,30 @@
             props: ["propsdata"]
         };
 
-        let appContent
+        let appContent = {
+            template: "<div>{{propsdata}}</div>",
+            props:["propsdata"]
+        };
+
+        new Vue({
+            el: "#app",
+            components: {
+                "app-header": appHeader,
+                "app-content": appContent
+            },
+            data: {
+                message: "발에 땀난다",
+                num: 10
+            }
+        });
     </script>
 
     <style>
-        
+        div, h1 {
+            font-size: 30px;
+            font-weight: bold;
+            padding: 30px;
+        }
     </style>
 </body>
 </html>
