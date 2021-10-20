@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Component Coffee</title>
+    <!-- script -->
+    <link rel="stylesheet" href="reset.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <app-header></app-header>
+        <app-footer></app-footer>
+    </div>
+
+    <div id="app2">
+        <app-header></app-header><app-header></app-header><app-header></app-header><app-header></app-header><app-header></app-header>
+        <app-footer></app-footer>
+    </div>
+
+    <!-- script -->
+    <script>
+        Vue.component("app-header", {
+            template: "<h1>Logo</h1>"
+        });
+
+        new Vue({
+            el: "#app",
+            components: {
+                "app-footer": {
+                    template: "<h2>copy right adasdasdasds all right reserved</h2>"
+                }
+            }
+        });
+
+        new Vue({
+            el: "#app2",
+            components: {
+                "app-footer": {
+                    template: "<h2>adsasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasd</h2>"
+                }
+            }
+        });
+    </script>
+
+    <!-- style -->
+    <style>
+        #app {
+            margin: 0 0 100px;
+            min-height: 200px;
+            background-color: #f55;
+        }
+
+        #app2 {
+            margin: 0 0 100px;
+            min-height: 200px;
+            background-color: #eee;
+        }
+
+        h1 {
+            display: block;
+            padding: 30px 30px;
+            background: #333;
+            font-size: 30px;
+            color: #fff;
+            letter-spacing: -0.05em;
+            font-weight: bold;
+        }
+
+        h2 {
+            display: block;
+            margin: 100px 0 0 0;
+            padding: 50px 30px;
+            text-align: center;
+            background: #333;
+            text-align: center;
+            color: #aaa;
+            letter-spacing: -0.05em;
+        }
+    </style>
+</body>
+</html>

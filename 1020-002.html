@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VUE-002</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script>
+        let div = document.querySelector("#app");
+        let viewModel = {};
+        
+        (function() {
+            function init() {
+                Object.defineProperty(viewModel, "str", {
+                    // 속성에 접근했을 때에 동작
+                    get: () => console.log("접근"),
+
+                    // 속성에 값을 할당했을 경우에 동작
+                    set: (newValue) => {
+                        console.log("할당", newValue);
+                        div.innerHTML = newValue;
+                        render(newValue);
+                    }
+                });
+            }
+
+            function render (value) {
+                div.innerHTML = value;
+            }
+
+            init();
+        })();
+    </script>
+</body>
+</html>

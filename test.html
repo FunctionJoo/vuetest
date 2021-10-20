@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>바닐라 스크립트 연습해야할듯</title>
+</head>
+<body>
+
+<h1>누르면 움직임</h1>
+<div class="test">
+    <button id="start">시작</button>
+    <button id="stop">종료</button>
+</div>
+
+<img id="img" src="https://item.kakaocdn.net/do/8f05a8aebde08230b03d11b49acadd1e8f324a0b9c48f77dbce3a43bd11ce785">
+
+<style>
+    .test {padding: 10px 0;}
+    button {
+        border:0 none;
+        border-radius:3px;
+        background:#eee;
+        margin: 0 10px 0 0;
+        padding: 5px 20px;
+        font-size: 15px;
+    }
+
+    .move {
+        /*이하 애니메이션*/
+        animation-name: imgmove;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+    }
+
+    @-webkit-keyframes imgmove {
+        0% {
+            margin-left:0px;
+        }
+        100% {
+            margin-left:500px;
+        }
+    }
+</style>
+
+<script>
+
+    // 이벤트
+    function move(handle) {
+        // 오브젝트 선택
+        const obj = document.querySelector("#img").classList;
+        // 실행시 보낸 값 파악
+        if (handle) {
+            obj.add('move');
+        } else {
+            obj.remove('move');
+        }
+    }
+
+    // 이벤트 선언
+    document.querySelector('#start').addEventListener( "click", () => move(true) );
+    document.querySelector('#stop').addEventListener("click", () => move(false) );
+</script>
+
+</body>
+</html>

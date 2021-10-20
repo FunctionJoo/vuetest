@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>바닐라 스크립트 연습해야할듯2</title>
+</head>
+<body>
+
+<h1>슬라이드 밑에 그거</h1>
+<div id="slide">
+    <div id="slideBtn">
+        <button class="on">0</button>
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>4</button>
+        <button>5</button>
+    </div>
+</div>
+
+<style>
+    #slide {
+        position: relative;
+        width: 100%;
+        height: 500px;
+        background:#333;
+    }
+    #slideBtn {
+        position:absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        font-size: 0;
+    }
+    #slideBtn button {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border:0 none;
+        border-radius:10px;
+        background:#ddd;
+        margin: 0 10px;
+        transition: 0.3s;
+        font-size: 0;
+        cursor: pointer;
+    }
+    #slideBtn button.on {
+        background: #f55;
+        width: 50px;
+    }
+</style>
+
+<script>
+    const btns = document.querySelectorAll('#slideBtn button');
+    const btnleng = btns.length-1;
+    for (let i=0; i<=btnleng; i++) {
+        btns[i].addEventListener( "click", () => btnevt(i) );
+    }
+
+    function btnevt(idx) {
+        for (let i=0; i<=btnleng; i++) {
+            btns[i].classList.remove('on');
+        };
+        btns[idx].classList.add('on');
+    }
+</script>
+
+</body>
+</html>
