@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>routing</title>
+    <!-- script -->
+    <link rel="stylesheet" href="reset.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router@2.0.0/dist/vue-router.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>Routinggggggggggggggg</h1>
+        <ul>
+            <router-link to="/main">go main</router-link>
+            <router-link to="/login">go login</router-link>
+        </ul>
+        <router-view></router-view>
+    </div>
+    <script>
+        //import Break from '@/break.html'
+
+        let Main = {template: '<div>Main</div>'}
+        let Login = {template: '<div>Login</div>'}
+
+        let routes = [
+            {path: '/main', component: Main},
+            {path: '/login', component: Login}
+        ];
+
+        var router = new VueRouter({
+            //mode: 'history',
+            routes
+        });
+
+        var app = new Vue({
+            router
+        }).$mount('#app');
+    </script>
+    <style>
+
+    </style>
+</body>
+</html>

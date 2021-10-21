@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watch VS Computed</title>
+    <!-- script -->
+    <link rel="stylesheet" href="reset.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router@2.0.0/dist/vue-router.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <p>{{num}}</p>
+        <div class="sim">
+            <div class="sim01">커피</div>
+            <div class="sim02">맛있는 커피를 마음껏 마시고 싶다</div>
+        </div>
+
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                num: 10
+            },
+            computed: {
+                doubleNum: function() {
+                    return this.num*2;
+                }
+            },
+            watch: {
+                num: function() {
+                    this.fetchUserByNumber(newValue);
+                }
+            },
+            methods: {
+                fetchUserByNumber: function(num) {
+                    axios.get(num);
+                }
+            }
+        });
+    </script>
+
+    <style>
+        * {font-family: 'Noto Sans KR', sans-serif !important;}
+        html {
+            padding: 50px;
+        }
+        p {
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: -0.05em;
+        }
+        .asdf {
+            font-size: 50px;
+        }
+
+        .sim {
+            position: relative;
+        }
+        .sim01 {
+            font-size: 180px;
+            line-height: 1em;
+            letter-spacing: -0.05em;
+            font-weight: 900;
+        }
+        .sim02 {
+            position: absolute;
+            top: 100%;
+            line-height: 100%;
+            left: 0;
+            margin: 10px 0 0 5px;
+            font-size: 15px;
+            font-weight: 400;
+            letter-spacing: 0.35em;
+        }
+    </style>
+</body>
+</html>

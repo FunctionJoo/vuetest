@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>component test3</title>
+    <!-- script -->
+    <link rel="stylesheet" href="reset.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+    <style>
+        div {border: 5px solid #ccc; margin: 100px 0 0 50px;}
+    </style>
+    <div id="app">
+        <allcomp></allcomp>
+        <smlcomp></smlcomp>
+    </div>
+
+    <div id="app2">
+        <allcomp></allcomp>
+        <smlcomp></smlcomp>
+    </div>
+
+    <script>
+        Vue.component('allcomp', {
+            template: '<p>전역이애오</p>'
+        });
+
+        new Vue({
+            el: '#app',
+            components: {
+                'smlcomp': {
+                    template: '<p>app1의 지역</p>'
+                }
+            }
+        });
+
+        new Vue({
+            el: '#app2',
+            components: {
+                'smlcomp': {
+                    template: '<p>app2의 지역</p>'
+                },
+                'allcomp': {
+                    template: '<p>덧씌우면 어캐댐?</p>'
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>

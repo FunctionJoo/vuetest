@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>data binding</title>
+    <!-- script -->
+    <link rel="stylesheet" href="reset.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p v-bind:id="uuid" v-bind:class="name">{{num}}</p>
+
+        <p>{{doubleNum}}</p>
+
+        <div v-if="loading">
+            loading....
+        </div>
+
+        <div v-else>
+            load complete!
+        </div>
+
+        <div v-show="loading">
+            Loading...
+        </div>
+
+        <input type="text" v-model="message">
+        <p>{{message}}</p>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                num: 10,
+                uuid: 'asdad',
+                name: 'joo',
+                loading: false,
+                message: 'asdddddddddddddd'
+            },
+            computed: {
+                doubleNum: function() {
+                    return this.num * 2
+                }
+            }
+        });
+    </script>
+</body>
+</html>

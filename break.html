@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>break</title>
+    <!-- script -->
+    <link rel="stylesheet" href="reset.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button v-on:click="onEvt">button</button>
+        <input type="text" v-on:keyup="onEvt">
+        <div class="resultbox">
+            EventType : {{evtType}}<br>
+            EventCount : {{evtCnt}}
+        </div>
+    </div>
+
+    <script>
+        let rstbox = document.querySelector('.resultbox');
+        new Vue({
+            el: '#app',
+            data: {
+                evtType : 'none',
+                evtCnt: 0
+            },
+            methods: {
+                onEvt: function(e) {
+                    console.log(e);
+                    this.evtType = e.type;
+                    this.evtCnt++;
+                }
+            }
+        });
+    </script>
+
+    <style>
+        html {text-align: center;}
+        #app {
+            display: inline-block;
+            width: auto;
+            margin: 100px auto 0;
+            padding: 50px 30px 30px;
+            border: 3px solid #ddd;
+            text-align: center;
+        }
+
+        button {
+            vertical-align: top;
+            width: 100px;
+            height: 35px;
+            border:0 none;
+            background: #f55;
+            border-radius: 5px;
+            letter-spacing: -0.05em;
+            font-size: 18px;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        input {
+            vertical-align: top;
+            width: 300px;
+            height: 35px;
+            border:3px solid #ddd;
+            box-sizing: border-box;
+            border-radius: 5px;
+            letter-spacing: -0.05em;
+            font-size: 18px;
+            color: #333;
+            font-weight: bold;
+            cursor: pointer;
+            transition:0.5s;
+            overflow: hidden;
+        }
+        input:focus {
+            border-color: #f55;
+            outline: none;
+        }
+
+        .resultbox {
+            padding: 30px 50px;
+            text-align: center;
+            font-size: 15px;
+            line-height: 20px;
+            letter-spacing: -0.03em;
+            color: #333;
+            text-align: center;
+        }
+    </style>
+</body>
+</html>
