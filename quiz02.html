@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Same Level</title>
+    <!-- script -->
+    <link rel="stylesheet" href="reset.css">
+    <!-- font-family: 'Noto Sans KR', sans-serif !important; -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router@2.0.0/dist/vue-router.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <child-component v-bind:propsdata="messege"></child-component>
+        <child-components2 v-bind:propsdata2="mesge2"></child-components2>
+    </div>
+
+    <script>
+        Vue.component('child-component', {
+            props: ['propsdata'],
+            template: '<h1>{{propsdata}}</h1>'
+        });
+
+        Vue.component('child-components2', {
+            props: ['propsdata2'],
+            template: '<h2>{{propsdata2}}</h2>'
+        });
+
+        new Vue({
+            el: '#app',
+            data: {
+                messege: '배가 고픕니다',
+                mesge2: '구내식당 가야지'
+            }
+        });
+    </script>
+
+<style>
+    * {font-family: 'Noto Sans KR', sans-serif !important;}
+
+    html {text-align: center;}
+    #app, #app2 {
+        padding: 100px 0 0;
+    }
+    h1, h2, h3, h4 {line-height: 100%;letter-spacing: -0.05em;}
+    h1 {
+        font-size: 45px;
+        font-weight: 700;
+    }
+    h2 {
+        font-size: 35px;
+        font-weight: 100;
+        margin: 10px 0 0;
+        letter-spacing:0.04em;
+    }
+    h3 {
+        font-size: 25px;
+        font-weight: 400;
+        margin: 70px 0 0;
+    }
+    h4 {
+        font-size: 15px;
+        font-weight: 100;
+        letter-spacing: -0.03em;
+        margin: 5px 0 0;
+    }
+</style>
+</body>
+</html>

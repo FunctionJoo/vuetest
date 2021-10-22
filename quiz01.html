@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>quiz01</title>
+    <!-- script -->
+    <link rel="stylesheet" href="reset.css">
+    <!-- font-family: 'Noto Sans KR', sans-serif !important; -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router@2.0.0/dist/vue-router.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <global-comp01></global-comp01>
+        <global-comp02></global-comp02>
+        <local-comp01></local-comp01>
+        <local-comp02></local-comp02>
+    </div>
+
+    <div id="app2">
+        <global-comp01></global-comp01>
+        <global-comp02></global-comp02>
+        <local-comp01></local-comp01>
+        <local-comp02></local-comp02>
+    </div>
+
+    <script>
+        let test = '';
+        Vue.component('global-comp01',{
+            template: `<h1>This is global comp01</h1>`
+        });
+        Vue.component('global-comp02',{
+            template: '<h2>This is another global comp02</h2>'
+        });
+        new Vue({
+            el: '#app',
+            data: {
+                test: 'testdd'
+            },
+            components: {
+                'local-comp01': {
+                    template: `<h3>This is local comp01</h3>`
+                },
+                'local-comp02': {
+                    template: '<h4>This is another local comp02</h4>'
+                }
+            }
+        });
+
+        new Vue({
+            el: '#app2',
+            components: {
+                'local-comp01': {
+                    template: '<h3>같은 컴포넌트 이름이지만</h3>'
+                },
+                'local-comp02': {
+                    template: '<h4>지역 컴포넌트 이기 떄문에 출력이 다르다</h4>'
+                }
+            }
+        });
+    </script>
+
+    <style>
+        * {font-family: 'Noto Sans KR', sans-serif !important;}
+
+        html {text-align: center;}
+        #app, #app2 {
+            padding: 100px 0 0;
+        }
+        h1, h2, h3, h4 {line-height: 100%;letter-spacing: -0.05em;}
+        h1 {
+            font-size: 45px;
+            font-weight: 700;
+        }
+        h2 {
+            font-size: 35px;
+            font-weight: 400;
+            margin: 10px 0 0;
+        }
+        h3 {
+            font-size: 25px;
+            font-weight: 400;
+            margin: 70px 0 0;
+        }
+        h4 {
+            font-size: 15px;
+            font-weight: 100;
+            letter-spacing: -0.03em;
+            margin: 5px 0 0;
+        }
+    </style>
+</body>
+</html>

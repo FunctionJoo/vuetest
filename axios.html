@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>axios</title>
+    <!-- script -->
+    <link rel="stylesheet" href="reset.css">
+    <!-- font-family: 'Noto Sans KR', sans-serif !important; -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router@2.0.0/dist/vue-router.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>Call JSON Data</h1>
+        <button v-on:click="callJson">Call!</button>
+        <div class="resultbox">{{userData}}</div>
+        <!-- <data-parse></data-parse> -->
+    </div>
+
+    <!-- <table>
+        <tr>
+            <th>ID</th>
+            <td>$id</td>
+        </tr>
+    </table> -->
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                userData: []
+            },
+            // components: {
+            //     'data-parse': {
+            //         template: `
+            //         <table>
+            //             <tr>
+            //                 <th>ID</th>
+            //                 <td>id</td>
+            //             </tr>
+            //         </table>
+            //         `,
+            //     },
+            // },
+            methods: {
+                callJson: function(){
+                    let that = this;
+                    axios.get('https://jsonplaceholder.typicode.com/users/')
+                    .then(function(responce){
+                        console.log(responce);
+                        that.userData = responce.data;
+                    })
+                    .catch(function(error){
+                        console.log(error);
+                    });
+                }
+            }
+        });
+    </script>
+
+    <style>
+        * {font-family: 'Noto Sans KR', sans-serif !important;}
+
+        html {text-align: center;}
+        #app {
+            padding: 100px;
+        }
+        h1 {
+            font-size: 45px;
+            font-weight: bold;
+            letter-spacing: -0.05em;
+        }
+        button {
+            border:0 none;
+            border-radius: 5px;
+            background: #f55;
+            color: #fff;
+            font-size: 30px;
+            margin: 35px 0 0;
+            padding: 10px 30px;
+            line-height: 100%;
+            letter-spacing: -0.05em;
+            cursor: pointer;
+        }
+        .resultbox {
+            padding: 50px;
+            line-height: 120%;
+        }
+    </style>
+</body>
+</html>
